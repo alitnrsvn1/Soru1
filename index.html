@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>        
+        
+        legend {
+            font-size: 20px;  
+            font-weight: bold;                     
+
+        }
+
+        table#siparisOnay,
+        table#siparisOnay th,
+        table#siparisOnay td {
+            border : 1px solid black;
+
+        }
+        table#siparisOnay{
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="onayla(event)" >
+        <fieldset>
+            <legend>Kisisel Bilgiler</legend>
+            <table>        
+                <tbody>
+                    <tr>
+                        <td><label for="name">Adiniz : </label></td>
+                        <td><input type="text" id="name" name="name"></td>
+                    </tr> 
+                    <tr>
+                        <td><label for="surname">Soyadiniz : </label></td>
+                        <td><input type="text" id="surname" name="surname"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="date">Dogum Tarihiniz : </label></td>
+                        <td><input type="date" id="birthday" name="date"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Mail Adresiniz : </label></td>
+                        <td><input type="email" id="email" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tel">Telefon : </label></td>
+                        <td><input type="tel" id="tel" name="tel" placeholder="5XX-XXX-XX-XX"></td>
+                    </tr>              
+                </tbody>
+            </table> 
+        </fieldset>   
+
+        <fieldset>
+            <legend>Siparis Bilgileri</legend>           
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="trenk">Tisort Rengi :</label></td>
+                        <td><input type="color" id="trenk" name="trenk" ></td>
+                    </tr>
+                    <tr>
+                        <td><label for="yrenk">Yazi Rengi :</label></td>
+                        <td><input type="color" id="yrenk" name="yrenk" ></td>                        
+                    </tr>
+                    <tr>
+                        <td><label for="yazi">Tisort uzerine yazilacak yaziyi girin : </label></td>
+                        <td><input type="text" name="yazi" id="yazi"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tadet">Tisort Adeti :</label></td>
+                        <td><input type="number" name="tadet" id="tadet"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="range">Beden Seciniz :</label></td>
+                        <td><input type="range" name="range" id="range"  step="1" max="5" min="0" list="steplist" />
+                        <datalist id="steplist">
+                            <option value="0"></option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                        </datalist>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td><button type="button" onclick="secClick()">Sec</button></td>
+                        <td><input type="text" name="secilenBeden" id="secilenBeden"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Teslimat Bilgileri</legend>           
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="adres">Adres :</label></td>
+                        <td><textarea id="adres" name="adres" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="teslimatTarihi">Teslimat tarihi :</label></td>
+                        <td><input type="week" id="teslimatTarihi" name="teslimatTarihi" ></td>                        
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Odeme Bilgileri</legend>
+            <table>        
+                <tbody>
+                    <tr>
+                        <td><label for="nameSurnamae">Ad Soyad : </label></td>
+                        <td><input type="text" id="nameSurnamae" name="nameSurname"></td>
+                    </tr> 
+                    <tr>
+                        <td><label for="kartNumarasi">Kart Numarasi :</label></td>
+                        <td><input type="text" id="kartNumarasi" name="kartNumarasi" placeholder="XXXX-XXXX-XXXX-XXXX"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="sonkullanim">Son Kullanma Tarihi :</label></td>
+                        <td><input type="month" id="sonKullanim" name="sonKullanim"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="cvv">CVV : </label></td>
+                        <td><input type="number" id="cvv" name="cvv"></td>
+                    </tr>
+                                
+                </tbody>
+            </table> 
+        </fieldset>         
+
+        <div>
+            <input type="submit"  value="Onayla" style="height: 35px; width: 100px; margin: 10px;" > 
+        </div>
+
+        <table id="siparisOnay">
+            <thead>
+                <tr>
+                    <th colspan="3">SIPARIS ONAY</th>                
+                </tr>       
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="5">Kisisel Bilgiler</th>   
+                    <td>Ad :</td>
+                    <td><input type="text"  id="onayName" disabled ></td>                             
+                </tr>
+                            
+                <tr>
+                    <td>Soyad :</td>
+                    <td><input type="text" id="onaySurname" disabled></td>                
+                </tr>
+                <tr>
+                    <td>Dogum Tarihi :</td>
+                    <td><input type="text" id="onayBirthday" disabled></td>                
+                </tr>
+                <tr>
+                    <td>Mail Adresi :</td>
+                    <td><input type="text" id="onayMail" disabled></td>                
+                </tr>
+                <tr>
+                    <td>Telefon :</td>
+                    <td><input type="text" id="onayTel" disabled></td>                
+                </tr>           
+            </tbody>
+    
+            <tbody>
+                <tr>
+                    <th rowspan="5">Siparis Bilgileri</th>
+                    <td>Tisort Rengi :</td>
+                    <td><input type="text" id="onayTisortRenk" disabled></td>               
+                </tr>
+                <tr>
+                    <td>Yazi Rengi :</td>
+                    <td><input type="text" id="onayYaziRenk" disabled></td>
+                </tr>
+                <tr>
+                    <td>Yazi :</td>
+                    <td><input type="text" id="onayYazi" disabled></td>
+                </tr>
+                <tr>
+                    <td>Tisort Adeti:</td>
+                    <td><input type="text" id="onayTisortAdeti" disabled></td>
+                </tr>
+                <tr>
+                    <td>Tisort Bedeni :</td>
+                    <td><input type="text" id="onayTisortBedeni" disabled></td>
+                </tr>            
+            </tbody>
+    
+            <tbody>
+                <tr>
+                    <th rowspan="2">Teslimat Bilgileri</th>
+                    <td>Adres :</td>
+                    <td><input type="text" id="onayAdres" disabled></td>               
+                </tr>
+                <tr>
+                    <td>Teslim Tarihi :</td>
+                    <td><input type="text" id="onayTeslimTarihi" disabled></td>
+                </tr>                        
+            </tbody>
+    
+            <tbody>
+                <tr>
+                    <th rowspan="4">Odeme Bilgileri</th>
+                    <td>Ad Soyad :</td>
+                    <td><input type="text" id="onayAdSoyad" disabled></td>               
+                </tr>
+                <tr>
+                    <td>Kart Numarasi :</td>
+                    <td><input type="text" id="onayKartNumarasi" disabled></td>
+                </tr>
+                <tr>
+                    <td>Son Kullanma Tarihi :</td>
+                    <td><input type="text" id="onaySonKullanim" disabled></td>
+                </tr>
+                <tr>
+                    <td>CVV :</td>
+                    <td><input type="text" id="onayCVV" disabled></td>
+                </tr>                      
+            </tbody>
+        </table>
+
+    </form>
+    <div>
+        <button type="button" onclick="tamamlaClick()" style="margin: 10px; height: 35px; ;">Alisverisi Tamamla</button> 
+    </div>
+
+    <script>
+        function secClick(){
+            const range = document.getElementById("range");
+            const beden = document.getElementById("secilenBeden");            
+            const bedenler = ["XS","S","M","L","XL","XXL"];
+            beden.value = bedenler[range.value] ;                
+        } 
+
+        function onayla(event){
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            const name = data.name;
+            const surname = data.surname;
+            const birthday = data.date;
+            const email = data.email;
+            const tel = data.tel;
+            const tisortRenk = data.trenk;
+            const tisortYaziRenk = data.yrenk;
+            const yazi = data.yazi;
+            const tisortAdeti = data.tadet;
+            const adres = data.adres
+            const teslimatTarihi = data.teslimatTarihi;
+            const adSoyad = data.nameSurname;
+            const kartNumarasi = data.kartNumarasi;
+            const sonKullanim = data.sonKullanim;
+            const cvv = data.cvv;
+            const beden = data.secilenBeden;
+            document.getElementById("onayName").value = name;
+            document.getElementById("onaySurname").value = surname;
+            document.getElementById("onayBirthday").value = birthday;
+            document.getElementById("onayMail").value = email;
+            document.getElementById("onayTel").value = tel;
+            document.getElementById("onayTisortRenk").value = tisortRenk;
+            document.getElementById("onayYaziRenk").value = tisortYaziRenk;
+            document.getElementById("onayYazi").value = yazi;
+            document.getElementById("onayTisortAdeti").value = tisortAdeti;
+            document.getElementById("onayAdres").value = adres;
+            document.getElementById("onayTeslimTarihi").value = teslimatTarihi;
+            document.getElementById("onayAdSoyad").value = adSoyad;
+            document.getElementById("onayKartNumarasi").value = kartNumarasi;
+            document.getElementById("onaySonKullanim").value = sonKullanim;
+            document.getElementById("onayCVV").value = cvv;
+            document.getElementById("onayTisortBedeni").value = beden;
+        }
+
+        function tamamlaClick(){
+            alert("Siparisiniz alindi.")
+        }
+
+    </script>
+
+   
+    
+    
+    
+</body>
+</html>
